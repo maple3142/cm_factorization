@@ -177,7 +177,7 @@ def Qinverse2 (Hx, a, N, time_res):
     r,s,t = xgcd(a.lift(), Hx, N)
     txgcd = time.time()
     if (s,t) == (None, None):
-	res = r, 0
+        res = r, 0
     else:
         rinv = r[0]^(-1)
         res = 1, s * rinv
@@ -212,7 +212,7 @@ def CMfactor(D, N, verb = 1, ctries=10, utries=10, fact_time=None, use_quinv2=Fa
             Hx = R(Hx)
             Q.<j> = QuotientRing(R, R.ideal(Hx))
             gcd, inverse = Qinverse2(Hx, 1728 - j, N, res)  
-	    if gcd == 1:
+        if gcd == 1:
                 a = Q(j * inverse)                
 
         else:
@@ -336,7 +336,7 @@ def work_factor(args):
             if args.mod % result.r != 0:
                 raise ValueError('Found result is invalid')
 
-            q = args.mod / result.r
+            q = args.mod // result.r
             success = True
             print("Factorization of N: %s is: \n%s * %s" % (args.mod, result.r, q))
 
